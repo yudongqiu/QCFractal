@@ -99,7 +99,7 @@ class TorsionDriveDataset(BaseProcedureDataset):
         """
 
         # Build new objects
-        molecule_ids = self.client.add_molecules(initial_molecules)
+        molecule_ids = sorted(set(self.client.add_molecules(initial_molecules)))
         td_keywords = TDKeywords(dihedrals=dihedrals,
                                  grid_spacing=grid_spacing,
                                  dihedral_ranges=dihedral_ranges,

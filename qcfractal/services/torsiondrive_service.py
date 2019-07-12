@@ -57,7 +57,7 @@ class TorsionDriveService(BaseService):
         # Build the record
         output = TorsionDriveRecord(
             **service_input.dict(exclude={"initial_molecule"}),
-            initial_molecule=[x.id for x in service_input.initial_molecule],
+            initial_molecule=sorted(set(x.id for x in service_input.initial_molecule)),
             provenance={
                 "creator": "torsiondrive",
                 "version": torsiondrive.__version__,
